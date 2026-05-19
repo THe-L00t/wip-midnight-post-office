@@ -103,7 +103,43 @@ Apple Developer 계정 필요 (→ `03_Apple_Developer_설정.md` 참고)
 
 ---
 
-## Step 6. DB 마이그레이션 실행
+## Step 6. Realtime 활성화
+
+편지 도착 실시간 알림에 사용됩니다.
+
+**Database → Replication** 메뉴로 이동
+
+아래 테이블에 Realtime 활성화:
+
+| 테이블 | 활성화 이유 |
+|--------|------------|
+| `letters` | 편지 대기 상태 변경 실시간 감지 |
+| `unlocks` | 관계 해금 즉시 알림 |
+
+각 테이블 옆 토글 **ON** 으로 변경.
+
+- [ ] `letters` Realtime 활성화 완료
+- [ ] `unlocks` Realtime 활성화 완료
+
+---
+
+## Step 7. 이메일 템플릿 설정 (선택)
+
+**Authentication → Email Templates**
+
+기본 이메일 템플릿을 게임 세계관에 맞게 수정할 수 있습니다.
+
+| 템플릿 | 기본 내용 | 권장 수정 방향 |
+|--------|----------|--------------|
+| Confirm signup | "Confirm your email" | "우체국 등록을 완료해주세요" |
+| Magic Link | "Your magic link" | "당신의 우체국 열쇠가 도착했어요" |
+| Reset Password | "Reset your password" | "우체국 열쇠를 재발급해드려요" |
+
+- [ ] 이메일 템플릿 수정 완료 (선택)
+
+---
+
+## Step 8. DB 마이그레이션 실행
 
 > AI(Claude Code)가 마이그레이션 파일을 작성해두면, 아래 명령어로 실행합니다.
 
@@ -126,7 +162,7 @@ supabase db push
 
 ---
 
-## Step 7. Edge Functions 배포
+## Step 9. Edge Functions 배포
 
 > AI가 함수 코드를 작성한 후 아래 명령어로 배포합니다.
 
@@ -154,5 +190,7 @@ supabase functions deploy send-push
 - [ ] Step 3 — Google 로그인 설정
 - [ ] Step 4 — Apple 로그인 설정
 - [ ] Step 5 — Storage 버킷 생성
-- [ ] Step 6 — DB 마이그레이션 실행
-- [ ] Step 7 — Edge Functions 배포
+- [ ] Step 6 — Realtime 활성화
+- [ ] Step 7 — 이메일 템플릿 설정 (선택)
+- [ ] Step 8 — DB 마이그레이션 실행
+- [ ] Step 9 — Edge Functions 배포
